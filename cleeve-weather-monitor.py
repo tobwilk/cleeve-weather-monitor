@@ -1,10 +1,18 @@
 import os, sys, time
+import requests
+from lxml import html
+
+
+SCRAPE_URL = "https://cleeve-weather.grg.org.uk/index.php"
 
 
 class CleeveWeatherMonitor:
-    variable = "blah"
+
 
     def getWeather(self):
+        page = requests.get(SCRAPE_URL)
+        tree = html.fromstring(page.content)
+        print(page)
         return("null")
 
 
