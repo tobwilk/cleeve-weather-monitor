@@ -16,9 +16,20 @@ class CleeveWeatherMonitor:
         # width property. Not nice, but it works.
 
         page = requests.get(SCRAPE_URL).text
-        soup = BeautifulSoup(page)
+        soup = BeautifulSoup(page, "lxml")
         table = soup.find('table', attrs={'width':'40%'})
-        print(table)
+
+        data = []
+
+        # parse rows
+        rows = table.find_all('tr')
+        for row in rows:
+            #print(row)
+            cols = row.find_all('td')
+            cols = [ele.text.strip() for ele in cols]
+            data.append([ele for ele in cols if ele]) # Get rid of empty values
+
+            print(data)
         
         return("null")
 
