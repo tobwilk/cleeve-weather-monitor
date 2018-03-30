@@ -1,18 +1,25 @@
 import os, sys, time
 import requests
-from lxml import html
+from bs4 import BeautifulSoup
 
 
-SCRAPE_URL = "https://cleeve-weather.grg.org.uk/index.php"
+SCRAPE_URL = "https://cleeve-weather.grg.org.uk"
 
 
 class CleeveWeatherMonitor:
 
 
     def getWeather(self):
-        page = requests.get(SCRAPE_URL)
-        tree = html.fromstring(page.content)
-        print(page)
+
+        # Get weather table from page. Note, there is no
+        # id for the table, so it needs to be grabbed using the
+        # width property. Not nice, but it works.
+
+        page = requests.get(SCRAPE_URL).text
+        soup = BeautifulSoup(page)
+        table = soup.find('table', attrs={'width':'40%'})
+        print(table)
+        
         return("null")
 
 
