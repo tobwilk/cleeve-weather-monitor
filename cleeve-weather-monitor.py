@@ -54,38 +54,50 @@ class CleeveWeatherMonitor:
 
         # RAIN TODAY
 
-            # TODO
+        soup = BeautifulSoup(str(row_rain_today), 'html.parser')
+        td = soup.find_all('td')
+        rain_today = td[0].text
 
         # RAIN RECENTLY
 
-            # TODO
+        soup = BeautifulSoup(str(row_rain_recent), 'html.parser')
+        td = soup.find_all('td')
+        rain_recent = td[0].text
 
         # TEMP
 
-            # TODO
+        soup = BeautifulSoup(str(row_temp_current), 'html.parser')
+        td = soup.find_all('td')
+        temp_current = td[1].text
 
         # WINDCHILL
 
-            # TODO
+        soup = BeautifulSoup(str(row_temp_windchill), 'html.parser')
+        td = soup.find_all('td')
+        temp_windchill = td[1].text
 
         # TEMP MAX TODAY
 
-            # TODO
+        soup = BeautifulSoup(str(row_temp_today_max), 'html.parser')
+        td = soup.find_all('td')
+        temp_today_max = td[1].text
 
         # TEMP MIN TODAY
 
-            # TODO
+        soup = BeautifulSoup(str(row_temp_today_min), 'html.parser')
+        td = soup.find_all('td')
+        temp_today_min = td[1].text
 
         # Print all the things
-        print("TIME: %s" % time)
+        print("\n\nTIME: %s" % time)
         print("PRESSURE: %s" % current_pressure)
         print("WIND: %s" % current_wind)
-        #print("RAIN TODAY: %s" % rain_today)
-        #print("RAIN_RECENTLY: %s" % rain_recent)
-        #print("TEMP: %s" % temp_current)
-        #print("WINDCHILL: %s" % temp_windchill)
-        #print("TEMP MAX: %s" % temp_today_max)
-        #print("TEMP MIN: %s" % temp_today_min)
+        print("RAIN TODAY: %s" % rain_today)
+        print("RAIN_RECENTLY: %s" % rain_recent)
+        print("TEMP: %s" % temp_current)
+        print("WINDCHILL: %s" % temp_windchill)
+        print("TEMP MAX: %s" % temp_today_max)
+        print("TEMP MIN: %s" % temp_today_min)
 
         #
         # We dont need this any more, for row debugging
