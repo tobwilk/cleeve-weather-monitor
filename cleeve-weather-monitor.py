@@ -15,7 +15,8 @@ class CleeveWeatherMonitor:
         # id for the table, so it needs to be grabbed using the
         # width property. Not nice, but it works.
 
-        count = 0
+        # count = 0 used for debug
+
         json_data = {}
 
         # Find and get the weather table
@@ -101,7 +102,7 @@ class CleeveWeatherMonitor:
         return(json_data)
 
         #
-        # We dont need this any more, for row debugging
+        # debug code
         #
 
         #       for row in rows:
@@ -110,8 +111,6 @@ class CleeveWeatherMonitor:
         #           rowtext = str(row)
         #           if rowtext.startswith('<tr>'):
         #           print(row)
-    
-        return
 
 
     def watch(self, interval=10):
@@ -138,7 +137,6 @@ class CleeveWeatherMonitor:
         except KeyboardInterrupt:
             print('interrupted!')
             print("")
-
 
 
 weatherMonitor = CleeveWeatherMonitor()
