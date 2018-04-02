@@ -8,8 +8,18 @@ SCRAPE_URL = "https://cleeve-weather.grg.org.uk"
 
 class CleeveWeatherMonitor:
 
+    def getWeather_APRS_API(self):
 
-    def getWeather(self):
+        #
+        # TODO, use the APRS.fi API to pull the data, rather than scraping
+        # the web page. https://aprs.fi/page/api
+        #
+
+        return(0)
+
+        
+
+    def getWeather_webscrapper(self):
 
         # Get weather table from page. Note, there is no
         # id for the table, so it needs to be grabbed using the
@@ -119,7 +129,7 @@ class CleeveWeatherMonitor:
         try:
             while True:
                 
-                weather = self.getWeather()
+                weather = self.webscrapper()
                 
                 # Print all the things
                 print("\n\nTIME: %s" % weather['time'])
